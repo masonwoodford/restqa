@@ -1,6 +1,6 @@
 const { getFormatter } = require('@restqa/cucumber-export')
 const Config = require('./config')
-const Welcome = require('./utils/welcome')
+const Tips = require('./utils/tips')
 
 const restqa = {
   env: process.env.RESTQA_ENV && String(process.env.RESTQA_ENV).toLowerCase(),
@@ -11,7 +11,7 @@ const restqa = {
 const config = new Config(restqa)
 config.restqa = config.restqa || {}
 
-const msg = new Welcome(config.restqa.tips)
+const msg = new Tips(config.restqa.tips)
 
 let title = 'Exporting the test result...'
 title = msg.text || title

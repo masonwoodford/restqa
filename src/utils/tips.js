@@ -1,5 +1,5 @@
 const chalk = require('chalk')
-const Welcome = function (options = {}) {
+const Tips = function (options = {}) {
   if (options.enabled === false) return
 
   if (!options.messages || !options.messages.length) {
@@ -12,7 +12,7 @@ const Welcome = function (options = {}) {
 
 // All the link needs to be colored into yellow
 // Because we have test that checking all the broken links (welcome.test.js > "Detect broken link from the messages")
-Welcome.prototype.MESSAGES = [
+Tips.prototype.MESSAGES = [
   `❤️ Join the ${chalk.red('discord')} community: ${chalk.yellow('https://restqa.io/chat')}`,
   `Give us a star ⭐️ on Github: ${chalk.yellow('https://github.com/restqa/restqa')}`,
   `You can use ${chalk.green('fake data')} using the RestQA Faker plugin`,
@@ -45,8 +45,8 @@ Welcome.prototype.MESSAGES = [
   `We are expanding our ${chalk.red('plugin ecosystem')}, let us know which plugin you would be interested. 👀`
 ]
 
-Welcome.prototype.toString = function () {
+Tips.prototype.toString = function () {
   return this.text
 }
 
-module.exports = Welcome
+module.exports = Tips

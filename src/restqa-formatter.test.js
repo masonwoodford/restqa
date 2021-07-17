@@ -1,7 +1,7 @@
 const Stream = require('stream')
-const Welcome = require('./utils/welcome')
+const Tips = require('./utils/tips')
 
-const { MESSAGES } = new Welcome()
+const { MESSAGES } = new Tips()
 
 const jestqa = new JestQA(__filename, true)
 

@@ -1,8 +1,11 @@
 const express = require('express')
 const path = require('path')
+const Controllers = require('./controllers')
+const Routes = require('./routes')
 
-module.exports = function (configFile, options = {}) {
+module.exports = function (configFile, options = {}, ProjectFileClass) {
   options = formatOptions(options)
+  const controllers = Controllers(options, ProjectFileClass)
   return express()
     .disable('x-powered-by')
     .set('restqa.configuration', configFile)
@@ -23,7 +26,7 @@ module.exports = function (configFile, options = {}) {
     .use(express.text())
     .use(express.json())
     .use(express.static(path.resolve(__dirname, '..', '..', 'dashboard', 'dist')))
-    .use(require('./routes'))
+    .use(Routes(controllers))
     .use('/api', express.static(path.resolve(__dirname, '.', 'openapi')))
     .use(options.server.report.urlPrefixPath, express.static(path.resolve(options.server.report.outputFolder)))
     .use((err, req, res, next) => {
