@@ -5,7 +5,7 @@ const logger = require('../utils/logger')
 const DashboardServer = require('../http-server')
 const Config = require('../config')
 
-module.exports = function (program) {
+module.exports = function (program, fileClass) {
   let {
     port = 8081,
     serve = true,
@@ -29,7 +29,7 @@ module.exports = function (program) {
     options = (raw.restqa || {}).dashboard
   }
 
-  const httpSever = http.createServer(DashboardServer(config, options))
+  const httpSever = http.createServer(DashboardServer(config, options, fileClass))
 
   if (serve) {
     return httpSever

@@ -1,7 +1,7 @@
 const Stream = require('stream')
 const path = require('path')
 const { version } = require('../../package.json')
-const RestQA = require('../../src')
+const RestQA = require('../../src/index.js')
 const Remote = require('./services/remote')
 const Report = require('./services/report')
 const Project = require('./services/project')
@@ -102,7 +102,7 @@ module.exports = function (options, Service) {
       options.configFile = req.app.get('restqa.configuration')
       options.stream = new Stream.Writable()
       options.stream._write = () => {}
-      options.path = path.resolve(server.testFolder, options.path || '')
+      options.path = path.resolve(Service.testFolder, options.path || '')
       const result = await RestQA.Run(options)
       res
         .status(201)

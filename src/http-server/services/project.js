@@ -25,6 +25,10 @@ class Project {
     return (this._options || {}).server || {}
   }
 
+  get testFolder () {
+    return this.server.testFolder
+  }
+
   getFeatures () {
     const pattern = path.join('.', '{*.feature,!(node_modules)', '**', '*.feature}')
     return glob.sync(pattern, { cwd: this.server.testFolder })

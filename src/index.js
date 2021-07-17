@@ -218,12 +218,12 @@ function Run (options) {
  * })
  */
 
-function Dashboard (options) {
+function Dashboard (options, fileClass) {
   const opt = {
     config: options.configFile,
     serve: false
   }
-  return dashboard(opt)
+  return dashboard(opt, fileClass)
 }
 
 module.exports = {
